@@ -224,6 +224,44 @@ p {
     text-decoration: underline; /* Add underline on hover */
 }
 
+.expense-prediction-project-container {
+    display: flex; 
+    flex-direction: column;
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: flex-start; 
+    align-items: center;
+    margin-bottom: 35px;
+    margin-top: -50px;
+}
+
+.expense-prediction-image-container {
+    max-width: 180px;
+    min-width: 710px;
+}
+
+.expense-prediction-image-container {
+    margin-top: 20px;
+    margin-left: 140px;
+    margin-right: 20px;
+}
+
+.expense-prediction-image {
+    background-image: url("../de-images/dataAnalysisImage.png");
+    width: 700px;
+    height: 908px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+}
+
+.expense-prediction-text-container {
+    max-width: 480px;
+    min-width: 480px;
+    margin-top: 48px;
+}
+
 @media only screen and (max-width: 950px) {
     p {
         font-size: 50px;
@@ -265,6 +303,23 @@ p {
         position: absolute;
         margin-top: -930px;
         margin-left: 40px;
+    }
+
+    .expense-prediction-text-container {
+        margin-top: 50px;
+    }
+
+    .margin-top-block-expensePrediction {
+        margin-top: 900px;
+    }
+
+    .expense-prediction-image-container {
+        margin-bottom: 190px; 
+        margin-right: 33px;
+    }
+
+    .expense-prediction-image {
+        margin-left: -93px;
     }
 }
 
@@ -323,8 +378,6 @@ p {
     margin-left: -29px;
     gap: 70px;
 }
-
-
 
 .nav-bar a {
     font-size: 40px;
