@@ -1,0 +1,274 @@
+/* CSS Sections Index
+1. Fonts Import
+2. HTML and Body Base Styles
+3. Navbar Section
+4. Hero Section
+5. Images and Blue Box Section
+6. Clickable Square Section
+7. Media Queries for Different Screen Sizes
+*/
+
+/* 1. Fonts Import */
+.inter-normal {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.jost-normal {
+    font-family: "Jost", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.geologica-normal {
+    font-family: "Geologica", serif;
+    font-optical-sizing: auto;
+    font-weight: extra-bold;
+    font-style: normal;
+    letter-spacing: -1;
+    font-variation-settings:
+        "slnt" 0,
+        "CRSV" 0,
+        "SHRP" 0;
+}
+
+
+/* General Body Styles */
+html {
+    font-size: 16px;
+    margin-bottom: 100px;
+}
+
+body {
+    background-color: #F7F7F7;
+}
+
+/* 3. Navbar Section */
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px; 
+}
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.1875rem; 
+    height: 1.5625rem; 
+    cursor: pointer;
+    margin-left: 1.5625rem; 
+    margin-right: 5.0625rem; 
+}
+
+.line {
+    width: 100%;
+    height: 0.26875rem; 
+    background-color: #000;
+    border-radius: 0.125rem; 
+    transition: all 0.3s ease-in-out; 
+    transform-origin: left 0.175rem; 
+}
+
+
+.hamburger.active .line:nth-child(1) {
+    opacity: 0;
+    transform: translateY(3.125rem); 
+}
+
+.hamburger.active .line:nth-child(3) {
+    opacity: 0;
+    transform: translateY(-3.125rem); 
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; 
+    width: 100%;
+    height: 2.5rem; 
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 2s ease-in-out;
+}
+
+.nav-bar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Jost", serif;
+    font-size: 1.375rem; 
+    width: 25rem; 
+    padding: 0;
+    font-weight: 500;
+}
+
+.nav-bar a {
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.3s ease-in-out; 
+    display: inline-block;
+}
+
+.nav-bar a:hover {
+    color: #287472; 
+}
+
+.skills-flex-container {
+    max-width: 1700px; 
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    margin-top: 32px;
+    margin-left: 95px;
+    gap: 80px; 
+}
+
+h1 {
+    font-family: "Geologica", serif;
+    font-size: 90px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+h2.subtitle {
+    font-family: "Jost", serif;
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 12px;
+}
+
+.skills-container {
+    width: 500px;
+}
+
+.skills-list li {
+    font-family: "Inter", serif;
+    font-size: 24px;
+    line-height: 1.6;
+    list-style-type: disc;
+}
+
+.skills-list li span {
+    font-weight: bold;
+}
+
+.skills-section2 {
+    margin-top: 54px;
+}
+
+.skills-section3 {
+    margin-top: 54px;
+}
+
+.flags-container {
+    margin-top: 112px;
+    display: inline-flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    flex-wrap: wrap;
+    margin-left: 110px;
+    margin-right: 50px;
+    align-items: center;
+}
+
+.flags-image {
+    width: 379px;
+    height: 436px;
+    background-image: url(../de-images/flagsImage.png);
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+.paint-brushes-image {
+    width: 429px;
+    height: 272px;
+    background-image: url(../de-images/paintBrushesImage.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-top: 340px;
+    margin-right: 20px;
+}
+
+
+
+@media only screen and (max-width: 571px) {
+   html {
+       font-size: 10px;
+   }
+    
+    .skills-flex-container {
+        margin-left: 45px;
+    }
+    
+    .header {
+        margin-top: 16px; 
+        width: 520px;
+    }
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.1875rem; 
+    height: 1.5625rem; 
+    cursor: pointer;
+    margin-left: 1.5625rem; 
+    margin-right: 5.0625rem; 
+}
+
+.line {
+    width: 100%;
+    height: 0.26875rem; 
+    background-color: #000;
+    border-radius: 0.125rem; 
+    transition: all 0.3s ease-in-out; 
+    transform-origin: left 0.175rem; 
+}
+
+.hamburger.active .line:nth-child(1) {
+    opacity: 0;
+    transform: translateY(3.125rem); 
+}
+
+.hamburger.active .line:nth-child(3) {
+    opacity: 0;
+    transform: translateY(-3.125rem); 
+}
+
+.nav-bar {
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.nav-bar ul {
+    margin-left: 20px;
+}
+
+.nav-bar a {
+    font-size: 20px;
+}
+
+}
+
+@media only screen and (max-width: 540px) {
+    .flags-container {
+        position: absolute;
+        margin-top: 530px;
+        margin-left: 0;
+    }
+    .skills-section1 {
+        margin-bottom: 530px;
+    }
+    .paint-brushes-image {
+        display: none;
+    }  
+}

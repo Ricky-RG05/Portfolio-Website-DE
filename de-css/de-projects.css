@@ -1,0 +1,329 @@
+/* CSS Sections Index
+1. Fonts Import
+2. HTML and Body Base Styles
+3. Navbar Section
+4. Hero Section
+5. Images and Blue Box Section
+6. Clickable Square Section
+7. Media Queries for Different Screen Sizes
+*/
+
+/* 1. Fonts Import */
+.inter-normal {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.jost-normal {
+    font-family: "Jost", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.geologica-normal {
+    font-family: "Geologica", serif;
+    font-optical-sizing: auto;
+    font-weight: extra-bold;
+    font-style: normal;
+    letter-spacing: -1;
+    font-variation-settings:
+        "slnt" 0,
+        "CRSV" 0,
+        "SHRP" 0;
+}
+
+
+/* General Body Styles */
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #F7F7F7;
+}
+
+/* 3. Navbar Section */
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px; 
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.1875rem; 
+    height: 1.5625rem; 
+    cursor: pointer;
+    margin-left: 1.5625rem; 
+    margin-right: 5.0625rem; 
+}
+
+.line {
+    width: 100%;
+    height: 0.26875rem; 
+    background-color: #000;
+    border-radius: 0.125rem; 
+    transition: all 0.3s ease-in-out; 
+    transform-origin: left 0.175rem; 
+}
+
+.hamburger.active .line:nth-child(1) {
+    opacity: 0;
+    transform: translateY(3.125rem); 
+}
+
+.hamburger.active .line:nth-child(3) {
+    opacity: 0;
+    transform: translateY(-3.125rem); 
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; 
+    width: 100%;
+    height: 2.5rem; 
+    position: relative;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 2s ease-in-out;
+}
+
+.nav-bar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Jost", serif;
+    font-size: 1.375rem; 
+    width: 25rem; 
+    padding: 0;
+    font-weight: 500;
+}
+
+.nav-bar a {
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.3s ease-in-out; 
+    display: inline-block;
+}
+
+.nav-bar a:hover {
+    color: #287472; 
+}
+
+h1 {
+    font-family: "Geologica", serif;
+    font-size: 90px;
+    font-weight: 900;
+    margin-bottom: -40px;
+}
+
+h2 {
+    font-family: "Geologica", serif;
+    font-size: 60px;
+    font-weight: 750;
+    margin-top: 100px;
+    margin-bottom: 33px;
+    max-width: 709px;
+    min-width: 709px;
+}
+
+
+p {
+    font-family: "Jost", serif;
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.tanakh-project-container {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: flex-start; 
+    align-items: center;
+}
+
+.projects-container {
+    margin-left: 88px;
+    margin-top: 41px;    
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tanakh-text-container {
+    max-width: 530px;
+    min-width: 500px;
+}
+
+.tanakh-image { 
+    background-image: url("../de-images/hebrewLandingPageTest-png.png");
+    width: 626.51px;
+    height: 348.17px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+    margin-left: 140px;
+}
+
+.liquor-store-project-container { 
+    display: flex; 
+    flex-direction: column;
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: flex-start; 
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.liquor-store-text-container {
+    max-width: 580px;
+    min-width: 500px;
+}
+
+.liquor-store-image-container {
+    margin-top: 20px;
+    margin-left: 140px;
+    margin-right: 20px;
+}
+
+.liquor-store-image {
+    background-image: url("../de-images/pythonLiquorStoreProject.png");
+    width: 700px;
+    height: 908px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+    
+}
+
+.link-style {
+    text-decoration: none; /* No underline by default */
+    font-weight: 800;
+    transition: text-decoration 2s ease; /* Smooth transitions */
+}
+
+.link-style:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+@media only screen and (max-width: 950px) {
+    p {
+        font-size: 50px;
+        width: 840px;
+    }
+
+    .text-container {
+        min-width: 80%;
+    }
+
+    .image-container {
+        position: absolute;
+    }
+
+    .projects-container {
+        margin-left: 60px;
+    }
+
+    .margin-top-block {
+        margin-top: 480px;
+    }
+    
+    .tanakh-image-container {
+        top: 0;
+        margin-top: 650px;
+    }
+
+    .tanakh-image { 
+        width: 805.51px;
+        height: 458.17px;
+        margin-left: -16px;
+    }
+
+    .margin-top-block-liquorStore {
+        margin-top: 880px;
+    }
+
+    .liquor-store-image-container {
+        position: absolute;
+        margin-top: -610px;
+        margin-left: 40px;
+    }
+}
+
+
+
+@media only screen and (max-width: 571px) {
+   html {
+       font-size: 16px;
+   }
+    
+    .skills-flex-container {
+        margin-left: 45px;
+    }
+    
+    .header {
+        margin-top: 16px; 
+        width: 520px;
+    }
+    
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.1875rem; 
+    height: 1.5625rem; 
+    cursor: pointer;
+    margin-left: 1.5625rem; 
+    margin-right: 5.0625rem; 
+}
+
+.line {
+    width: 100%;
+    height: 0.26875rem; 
+    background-color: #000;
+    border-radius: 0.125rem; 
+    transition: all 0.3s ease-in-out; 
+    transform-origin: left 0.175rem; 
+}
+
+.hamburger.active .line:nth-child(1) {
+    opacity: 0;
+    transform: translateY(3.125rem); 
+}
+
+.hamburger.active .line:nth-child(3) {
+    opacity: 0;
+    transform: translateY(-3.125rem); 
+}
+
+.nav-bar {
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.nav-bar ul {
+    margin-left: -29px;
+}
+
+.nav-bar a {
+    font-size: 30px;
+}
+}

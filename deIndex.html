@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page von Ricardo</title>
+    <link rel="stylesheet" href="de-css/de-reset.css">
+    <link rel="stylesheet" href="de-css/de.index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+
+        <nav class="nav-bar">
+            <ul>
+                <li class="nav-item"><a href="de-skills.html">Fähigkeiten</a></li>
+                <li class="nav-item"><a href="de-projects.html">Projekte</a></li>
+                <li class="nav-item"><a href="de-about-me.html">Über mich</a></li>
+                
+                <select id="language-toggle">
+                    <option value="https://ricky-rg05.github.io/Portfolio-Website/">Englisch</option>
+                    <option value="../deIndex.html" selected>Deutsch</option>
+                    
+                </select>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="hero-content">
+        <h1>Hallo!<br> Ich bin Ricardo</h1>
+        <h3>Ein kreativer Frontend-Entwickler mit einem Begeisterung für Code und Design.</h3>
+    </div>
+
+    <div class="image-layout">
+        <div class="project-img1" loading="lazy"></div>
+        <div class="ricardo-img2" loading="lazy"></div>
+        <div class="blue-box"></div>
+    </div>
+
+    <section class="click-square hidden">
+        <div class="square-content">
+            <h2>Klicken Sie <a href="de-projects.html"><span class="click-here">hier</span></a> um mein neuestes Projekt anzuschauen!</h2>
+        </div>
+    </section>
+    
+    <script src="de-javascript/de-script.js"></script>
+</body>
+</html>
+
+
