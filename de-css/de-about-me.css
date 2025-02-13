@@ -151,8 +151,8 @@ p {
 
 .about-me-image {
     background-image: url("../de-images/iceberg-ricardo.jpg");
-    width: 609.75px;
-    height: 813px;
+    width: 629.75px;
+    height: 970px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;  
@@ -165,10 +165,9 @@ p {
 }
 
 .lets-connect-container {
-    margin-top: 30px;
     margin-left: 50px;
     max-width: 710px;
-    margin-top: 80px;
+    margin-top: 60px;
     margin-bottom: 80px;
     width: 1000px;
 }
@@ -301,10 +300,9 @@ p {
     }
 
     .about-me-image {
-        background-image: url("../images/iceberg-ricardo.jpg");
-        width: 909.75px;
+        width: 800.75px;
         height: 1113px;
-    }    
+    }  
 }
 
 .link-style {
