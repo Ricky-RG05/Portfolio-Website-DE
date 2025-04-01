@@ -74,7 +74,6 @@ body {
     transform-origin: left 0.175rem; 
 }
 
-
 .hamburger.active .line:nth-child(1) {
     opacity: 0;
     transform: translateY(3.125rem); 
@@ -135,6 +134,11 @@ h1 {
     font-size: 90px;
     font-weight: 900;
     margin-bottom: 40px;
+}
+
+.em {
+    font-weight: 250;
+    font-style: italic;
 }
 
 h2.subtitle {
