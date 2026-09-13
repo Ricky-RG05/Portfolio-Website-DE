@@ -301,21 +301,18 @@ p {
 
     .liquor-store-image-container {
         position: absolute;
-        margin-top: -610px;
+        margin-top: -910px;
         margin-left: 40px;
     }
 
-    .expense-prediction-text-container {
-        margin-top: 50px;
-    }
-
     .margin-top-block-expensePrediction {
-        margin-top: 900px;
+        margin-top: 1000px;
     }
 
     .expense-prediction-image-container {
-        margin-bottom: 290px; 
+        margin-bottom: 90px; 
         margin-right: 33px;
+        padding-bottom: 100px;
     }
 
     .expense-prediction-image {
