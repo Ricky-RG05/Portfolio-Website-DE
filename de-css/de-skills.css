@@ -1,11 +1,10 @@
 /* CSS Sections Index
 1. Fonts Import
-2. HTML and Body Base Styles
+2. Root Variables & Base Styles
 3. Navbar Section
-4. Hero Section
-5. Images and Blue Box Section
-6. Clickable Square Section
-7. Media Queries for Different Screen Sizes
+4. Skills Content Section
+5. Flags & Paint Brushes Images
+6. Media Queries (minimal — clamp() + flexbox handle most reflow now)
 */
 
 /* 1. Fonts Import */
@@ -28,112 +27,129 @@
     font-optical-sizing: auto;
     font-weight: extra-bold;
     font-style: normal;
-    letter-spacing: -1;
+    letter-spacing: -1px;
     font-variation-settings:
         "slnt" 0,
         "CRSV" 0,
         "SHRP" 0;
 }
 
+/* 2. Root Variables & Base Styles */
+:root {
+    --color-bg: #F7F7F7;
+    --color-accent: #287472;
+    --container-width: min(75rem, 92%);
+}
 
-/* General Body Styles */
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 16px;
-    margin-bottom: 100px;
 }
 
 body {
-    background-color: #F7F7F7;
+    margin: 0;
+    background-color: var(--color-bg);
+    padding-bottom: clamp(2rem, 6vw, 6.25rem); /* replaces the old html { margin-bottom: 100px } */
+    overflow-x: hidden;
 }
 
-/* 3. Navbar Section */
-
+/* 3. Navbar Section (same pattern as the index page, for consistency) */
 .header {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    margin-top: 16px; 
+    gap: clamp(1rem, 4vw, 3rem);
+    width: var(--container-width);
+    margin: clamp(1rem, 3vw, 1rem) auto 0;
 }
+
 .hamburger {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 2.1875rem; 
-    height: 1.5625rem; 
+    width: clamp(1.75rem, 5vw, 2.1875rem);
+    height: clamp(1.25rem, 3.5vw, 1.5625rem);
     cursor: pointer;
-    margin-left: 1.5625rem; 
-    margin-right: 5.0625rem; 
+    flex-shrink: 0;
 }
 
 .line {
     width: 100%;
-    height: 0.26875rem; 
+    height: 0.26875rem;
     background-color: #000;
-    border-radius: 0.125rem; 
-    transition: all 0.3s ease-in-out; 
-    transform-origin: left 0.175rem; 
+    border-radius: 0.125rem;
+    transition: all 0.3s ease-in-out;
+    transform-origin: left center;
 }
 
 .hamburger.active .line:nth-child(1) {
     opacity: 0;
-    transform: translateY(3.125rem); 
+    transform: translateY(0.6rem);
 }
 
 .hamburger.active .line:nth-child(3) {
     opacity: 0;
-    transform: translateY(-3.125rem); 
+    transform: translateY(-0.6rem);
 }
 
 .nav-bar {
     display: flex;
     align-items: center;
-    gap: 1.25rem; 
+    gap: 1.25rem;
     width: 100%;
-    height: 2.5rem; 
     position: relative;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 2s ease-in-out;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
 
 .nav-bar ul {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     font-family: "Jost", serif;
-    font-size: 1.375rem; 
-    width: 25rem; 
+    font-size: clamp(1rem, 2vw, 1.375rem);
+    width: auto;
     padding: 0;
+    margin: 0;
     font-weight: 500;
+    gap: clamp(1.25rem, 4vw, 2.5rem);
+    list-style: none;
 }
 
 .nav-bar a {
-    color: inherit; 
-    text-decoration: none; 
-    transition: color 0.3s ease-in-out; 
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
     display: inline-block;
 }
 
 .nav-bar a:hover {
-    color: #287472; 
+    color: var(--color-accent);
 }
 
+/* 4. Skills Content Section */
+/* flex-wrap lets the two columns (text + images) sit side by side on wide
+   screens and stack automatically on narrow ones — no breakpoint needed
+   just to make that happen. */
 .skills-flex-container {
-    max-width: 1700px; 
-    display: inline-flex;
-    flex-direction: row;
-    align-items: flex-start; 
-    margin-top: 32px;
-    margin-left: 95px;
-    gap: 80px; 
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* was flex-start — stretch lets .flags-container match the text column's height */
+    justify-content: center;
+    width: var(--container-width);
+    margin: clamp(2rem, 6vw, 3rem) auto 0;
+    gap: clamp(2.5rem, 6vw, 5rem);
 }
 
 h1 {
     font-family: "Geologica", serif;
-    font-size: 90px;
+    font-size: clamp(2.5rem, 7vw, 5.625rem);
     font-weight: 900;
-    margin-bottom: 40px;
+    line-height: 1.15;
+    margin: 0 0 clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .em {
@@ -144,19 +160,26 @@ h1 {
 h2.subtitle {
     font-family: "Jost", serif;
     font-weight: bold;
-    font-size: 50px;
-    margin-bottom: 12px;
+    font-size: clamp(1.75rem, 4.5vw, 3.125rem);
+    margin: 0 0 0.75rem;
 }
 
 .skills-container {
-    width: 500px;
+    flex: 1 1 20rem;
+    max-width: 31.25rem;
+}
+
+.skills-list {
+    margin: 0;
+    padding-left: 1.25rem;
 }
 
 .skills-list li {
     font-family: "Inter", serif;
-    font-size: 24px;
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
     line-height: 1.6;
     list-style-type: disc;
+    margin-bottom: 0.4rem;
 }
 
 .skills-list li span {
@@ -164,124 +187,60 @@ h2.subtitle {
 }
 
 .skills-section2 {
-    margin-top: 54px;
+    margin-top: clamp(2rem, 5vw, 3.375rem);
 }
 
 .skills-section3 {
-    margin-top: 54px;
+    margin-top: clamp(2rem, 5vw, 3.375rem);
 }
 
 .skills-section3 h2 {
-    width: 600px;
+    max-width: 100%; /* was a fixed 600px, wider than its own parent column */
 }
 
+/* 5. Flags & Paint Brushes Images */
+/* Both images now scale by width with a locked aspect-ratio, instead of
+   fixed px width/height plus a magic margin-top to space them apart. */
 .flags-container {
-    margin-top: 112px;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    background-size: cover;
-    background-position: center;
-    flex-wrap: wrap;
-    margin-left: 110px;
-    margin-right: 50px;
     align-items: center;
+    justify-content: space-between; /* flags-image at the top, paint-brushes-image pushed to the bottom */
+    gap: clamp(2rem, 6vw, 5.5rem); /* still enforced as a minimum gap if the column isn't tall enough to need space-between */
+    flex: 0 1 20rem;
 }
 
 .flags-image {
-    width: 379px;
-    height: 436px;
+    width: clamp(12rem, 26vw, 23.6875rem);
+    aspect-ratio: 379 / 436;
     background-image: url(../de-images/flagsImage.png);
     background-size: cover;
     background-position: center;
+    margin: 3rem;
 }
 
-
-
 .paint-brushes-image {
-    width: 429px;
-    height: 272px;
+    width: clamp(13rem, 28vw, 26.8125rem);
+    aspect-ratio: 429 / 272;
     background-image: url(../de-images/paintBrushesImage.jpg);
     background-size: cover;
     background-position: center;
-    margin-top: 340px;
-    margin-right: 20px;
 }
 
+/* 6. Media Queries */
+/* Everything above already reflows on its own. The one deliberate design
+   call left: drop the paint-brushes image on small screens to reduce
+   clutter, same as your original intent — but without the position:absolute
+   + margin-top: 600px guesswork that was here before. */
 
-
-@media only screen and (max-width: 571px) {
-   html {
-       font-size: 10px;
+   @media only screen and (max-width: 740px) {
+    .flags-image {
+        margin: 0;
+    }
    }
-    
-    .skills-flex-container {
-        margin-left: 45px;
-    }
-    
-    .header {
-        margin-top: 16px; 
-        width: 520px;
-    }
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 2.1875rem; 
-    height: 1.5625rem; 
-    cursor: pointer;
-    margin-left: 1.5625rem; 
-    margin-right: 5.0625rem; 
-}
 
-.line {
-    width: 100%;
-    height: 0.26875rem; 
-    background-color: #000;
-    border-radius: 0.125rem; 
-    transition: all 0.3s ease-in-out; 
-    transform-origin: left 0.175rem; 
-}
-
-.hamburger.active .line:nth-child(1) {
-    opacity: 0;
-    transform: translateY(3.125rem); 
-}
-
-.hamburger.active .line:nth-child(3) {
-    opacity: 0;
-    transform: translateY(-3.125rem); 
-}
-
-.nav-bar {
-    max-width: 400px;
-    min-width: 300px;
-}
-
-.nav-bar ul {
-    margin-left: 20px;
-}
-
-.nav-bar a {
-    font-size: 20px;
-}
-
-}
-
-@media only screen and (max-width: 540px) {
-    .flags-container {
-        position: absolute;
-        margin-top: 600px;
-        margin-left: 0;
-    }
-    .skills-section1 {
-        margin-bottom: 530px;
-    }
+   @media only screen and (max-width: 540px) {
     .paint-brushes-image {
         display: none;
-    }  
-
-    .skills-section3 h2 {
-    font-size: 45px;
-    width: 600px;
-}
+    }
 }
