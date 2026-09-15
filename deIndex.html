@@ -24,34 +24,37 @@
                 <li class="nav-item"><a href="de-skills.html">Fähigkeiten</a></li>
                 <li class="nav-item"><a href="de-projects.html">Projekte</a></li>
                 <li class="nav-item"><a href="de-about-me.html">Über mich</a></li>
-                
+
                 <select id="language-toggle">
                     <option value="https://ricky-rg05.github.io/Portfolio-Website/">Englisch</option>
                     <option value="" selected>Deutsch</option>
-                    
                 </select>
-
             </ul>
         </nav>
     </div>
 
-    <div class="hero-content">
-        <h1>Hallo!<br> Ich bin Ricardo</h1>
-        <h3>Informatik-Student an der Hochschule Hof <br> <br> Ich baue KI-Pipelines mit RAG-Systemen, angetrieben von lokalen KI-Modellen.</h3>
-    </div>
+    <!-- NEW: single wrapper so text + image collage can sit side-by-side on
+         desktop and stack on mobile via flexbox, instead of being two
+         independently-positioned blocks. This is the only structural change. -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Hallo!<br> Ich bin Ricardo</h1>
+            <h3>Informatik-Student an der Hochschule Hof <br> <br> Ich baue KI-Pipelines mit RAG-Systemen, angetrieben von lokalen KI-Modellen.</h3>
+        </div>
 
-    <div class="image-layout">
-        <div class="project-img1" loading="lazy"></div>
-        <div class="ricardo-img2" loading="lazy"></div>
-        <div class="blue-box"></div>
+        <div class="image-layout">
+            <div class="blue-box"></div>
+            <div class="ricardo-img2" loading="lazy"></div>
+            <div class="project-img1" loading="lazy"></div>
+        </div>
     </div>
 
     <section class="click-square hidden">
         <div class="square-content">
-            <h2>Klicken Sie <a href="de-projects.html"><span class="click-here">hier</span></a> um mein neuestes Projekt anzuschauen!</h2>
+            <h2>Klicke <a href="de-projects.html"><span class="click-here">hier</span></a> um mein neuestes Projekt anzusehen!</h2>
         </div>
     </section>
-    
+
     <script src="de-javascript/de-script.js"></script>
 </body>
 </html>
