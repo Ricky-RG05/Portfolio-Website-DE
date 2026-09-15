@@ -1,11 +1,10 @@
 /* CSS Sections Index
 1. Fonts Import
-2. HTML and Body Base Styles
+2. Root Variables & Base Styles
 3. Navbar Section
-4. Hero Section
-5. Images and Blue Box Section
-6. Clickable Square Section
-7. Media Queries for Different Screen Sizes
+4. About Me Section
+5. Let's Connect Section
+6. Media Queries (minimal — clamp() + flexbox handle most reflow now)
 */
 
 /* 1. Fonts Import */
@@ -28,166 +27,195 @@
     font-optical-sizing: auto;
     font-weight: extra-bold;
     font-style: normal;
-    letter-spacing: -1;
+    letter-spacing: -1px;
     font-variation-settings:
         "slnt" 0,
         "CRSV" 0,
         "SHRP" 0;
 }
 
+/* 2. Root Variables & Base Styles */
+:root {
+    --color-bg: #F7F7F7;
+    --color-accent: #287472;
+    --container-width: min(75rem, 92%);
+}
 
-/* General Body Styles */
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 16px;
 }
 
 body {
-    background-color: #F7F7F7;
+    margin: 0;
+    background-color: var(--color-bg);
+    padding-bottom: clamp(2rem, 6vw, 5rem);
+    overflow-x: hidden;
 }
 
-/* 3. Navbar Section */
-
+/* 3. Navbar Section (same pattern as the other pages) */
 .header {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    margin-top: 16px; 
+    gap: clamp(1rem, 4vw, 3rem);
+    width: var(--container-width);
+    margin: clamp(1rem, 3vw, 1rem) auto 0;
 }
 
 .hamburger {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 2.1875rem; 
-    height: 1.5625rem; 
+    width: clamp(1.75rem, 5vw, 2.1875rem);
+    height: clamp(1.25rem, 3.5vw, 1.5625rem);
     cursor: pointer;
-    margin-left: 1.5625rem; 
-    margin-right: 5.0625rem; 
+    flex-shrink: 0;
 }
 
 .line {
     width: 100%;
-    height: 0.26875rem; 
+    height: 0.26875rem;
     background-color: #000;
-    border-radius: 0.125rem; 
-    transition: all 0.3s ease-in-out; 
-    transform-origin: left 0.175rem; 
+    border-radius: 0.125rem;
+    transition: all 0.3s ease-in-out;
+    transform-origin: left center;
 }
 
 .hamburger.active .line:nth-child(1) {
     opacity: 0;
-    transform: translateY(3.125rem); 
+    transform: translateY(0.6rem);
 }
 
 .hamburger.active .line:nth-child(3) {
     opacity: 0;
-    transform: translateY(-3.125rem); 
+    transform: translateY(-0.6rem);
 }
 
 .nav-bar {
     display: flex;
     align-items: center;
-    gap: 1.25rem; 
+    gap: 1.25rem;
     width: 100%;
-    height: 2.5rem; 
     position: relative;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 2s ease-in-out;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
 
 .nav-bar ul {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     font-family: "Jost", serif;
-    font-size: 1.375rem; 
-    width: 25rem; 
+    font-size: clamp(1rem, 2vw, 1.375rem);
+    width: auto;
     padding: 0;
+    margin: 0;
     font-weight: 500;
+    gap: clamp(1.25rem, 4vw, 2.5rem);
+    list-style: none;
 }
 
 .nav-bar a {
-    color: inherit; 
-    text-decoration: none; 
-    transition: color 0.3s ease-in-out; 
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
     display: inline-block;
 }
 
 .nav-bar a:hover {
-    color: #287472; 
+    color: var(--color-accent);
 }
 
+/* 4. About Me Section */
 h1 {
     font-family: "Geologica", serif;
-    font-size: 90px;
+    font-size: clamp(2.5rem, 7vw, 5.625rem);
     font-weight: 900;
-    margin-bottom: 40px;
+    line-height: 1.15;
+    margin: 0 0 clamp(1.25rem, 3vw, 2.5rem);
 }
 
 p {
     font-family: "Inter", serif;
-    font-size: 30px;
+    font-size: clamp(1.1rem, 2vw, 1.875rem);
     font-weight: 600;
-    line-height: 1.35;
-    margin-right: 43px;
+    line-height: 1.5;
+    margin: 0;
 }
 
 .about-me-container {
     display: flex;
     flex-direction: column;
-    min-width: 1219px;
-    margin-left: 60px;
-    margin-top: 25px;
+    width: var(--container-width);
+    margin: clamp(1.5rem, 4vw, 2rem) auto 0;
 }
 
 .about-me-content {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 22px;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 4vw, 2.75rem);
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+/* FIX: the width now lives on the flex item itself (.about-me-image-container),
+   not just on the inner .about-me-image div. Before, the outer item had
+   flex: 0 1 20rem (free to shrink) while the inner image had its own
+   independent clamp() width — those two numbers disagreed with each other,
+   which threw off how much space flexbox thought was left for the text,
+   producing the "image shrinks oddly / text pushed right" glitch.
+   flex: 0 0 <width> means: don't grow, don't shrink — the clamp() alone
+   controls its size now, consistently. */
+.about-me-image-container {
+    flex: clamp(14rem, 200vw, 24.5rem);
+    aspect-ratio: 0.649; /* matches the original 629.75 / 970 proportions */
 }
 
 .about-me-image {
+    width: 100%;
+    height: 100%;
     background-image: url("../de-images/iceberg-ricardo.jpg");
-    width: 629.75px;
-    height: 970px;
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;  
+    background-repeat: no-repeat;
 }
 
 .about-me-text-container {
-    min-width: 670px;
-    margin-left: 50px;
-    max-width: 300px;
+    flex: 1 1 18rem;
+    max-width: 50rem;
+    min-width: 0; /* FIX: without this, flex items default to a hidden
+                     minimum width based on their content, which can
+                     silently force the whole row wider than intended
+                     and shove the image/text out of alignment. */
 }
 
+/* 5. Let's Connect Section */
 .lets-connect-container {
-    margin-left: 50px;
-    max-width: 710px;
-    margin-top: 60px;
-    margin-bottom: 80px;
-    width: 1000px;
+    width: var(--container-width);
+    margin: clamp(2.5rem, 6vw, 3.75rem) auto clamp(3rem, 6vw, 5rem);
 }
 
 .lets-connect {
     font-family: "Geologica", serif;
-    font-size: 40px;
+    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
     font-weight: 840;
-    
 }
+
 .lets-connect h1 {
     margin-bottom: 0;
 }
 
 .list-increased-line-height {
     font-family: "Inter", serif;
-    font-size: 30px;
+    font-size: clamp(1.1rem, 2vw, 1.875rem);
     font-weight: 600;
     line-height: 2;
-    margin-left: 9px;
+    margin: 0;
+    padding-left: 1.5rem;
 }
 
 .list-increased-line-height li {
@@ -198,113 +226,22 @@ p {
     font-weight: 890;
 }
 
-
-@media only screen and (max-width: 568px) {
-    .hamburger {
-        margin-right: 20px;
-    }
-}
-
-@media only screen and (max-width: 571px) {
-   html {
-       font-size: 16px;
-   }
-    
-    .skills-flex-container {
-        margin-left: 45px;
-    }
-    
-    .header {
-        margin-top: 16px; 
-        width: 520px;
-    }
-    
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 2.1875rem; 
-    height: 1.5625rem; 
-    cursor: pointer;
-    margin-left: 1.5625rem; 
-    margin-right: 5.0625rem; 
-}
-
-.line {
-    width: 100%;
-    height: 0.26875rem; 
-    background-color: #000;
-    border-radius: 0.125rem; 
-    transition: all 0.3s ease-in-out; 
-    transform-origin: left 0.175rem; 
-}
-
-.hamburger.active .line:nth-child(1) {
-    opacity: 0;
-    transform: translateY(3.125rem); 
-}
-
-.hamburger.active .line:nth-child(3) {
-    opacity: 0;
-    transform: translateY(-3.125rem); 
-}
-
-.nav-bar {
-    max-width: 400px;
-    min-width: 300px;
-}
-
-.nav-bar ul {
-    margin-left: -29px;
-}
-
-.nav-bar a {
-    font-size: 30px;
-}
-}
-
-@media only screen and (max-width: 520px) {
-    .about-me-content {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-
-    .about-me-container {
-        display: flex;
-        margin-left: 20px;
-        align-items: center;
-    }
-
-    .about-me-text-container {
-        min-width: 954px;
-        margin-left: 0px;
-        margin-top: 35px;
-    }
-
-    .about-me-container h1 {
-        margin-right: 500px;
-    }
-
-    .lets-connect-container {
-        margin-left: 140px;
-    }
-
-    p {
-        font-size: 48px;
-        
-    }
-
-    .list-increased-line-height li {
-        font-size: 48px;
-    }
-
-    .about-me-image {
-        width: 800.75px;
-        height: 1113px;
-    }  
-}
-
 .link-style {
     text-decoration: none;
 }
+
+/* 6. Media Queries */
+/* Everything above already reflows on its own via flex-wrap + clamp().
+   Nothing left to patch here — the image and text stack naturally once
+   they no longer fit side by side. */
+
+   @media only screen and (max-width: 880px) {
+    
+    .about-me-content {
+        flex-direction: column;
+    }
+
+    .about-me-image-container {
+        width: clamp(24rem, 30vw, 24.5rem);
+    }
+   }
