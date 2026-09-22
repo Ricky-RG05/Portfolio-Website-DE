@@ -206,6 +206,10 @@ p {
     min-width: 0; /* prevents text content from forcing the row wider than intended */
 }
 
+.mmt-text-container {
+    max-width: 33.125rem; /* 530px */
+}
+
 .image-container {
     flex: 0 0 auto;
     margin: 0 auto; /* centers the image once it wraps onto its own line on mobile */
@@ -220,6 +224,16 @@ p {
 .liquor-store-text-container {
     max-width: 36.25rem; /* 580px */
 }
+
+.mmt-image {
+    width: clamp(7rem, 37vw, 70.125rem); /* was a fixed 626.51px */
+    aspect-ratio: 469 / 781; 
+    background-image: url("../de-images/mmt.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 
 .expense-prediction-text-container {
     max-width: 30rem; /* was min-width AND max-width both 480px — fully fixed */
