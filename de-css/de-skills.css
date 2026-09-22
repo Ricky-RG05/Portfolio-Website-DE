@@ -198,6 +198,20 @@ h2.subtitle {
     max-width: 100%; /* was a fixed 600px, wider than its own parent column */
 }
 
+.skills-section4 {
+    margin-top: clamp(2rem, 5vw, 3.375rem);
+}
+
+.link-style {
+    text-decoration: none;
+    font-weight: 800;
+    transition: text-decoration 0.2s ease;
+}
+
+.link-style:hover {
+    text-decoration: underline;
+}
+
 /* 5. Flags & Paint Brushes Images */
 /* Both images now scale by width with a locked aspect-ratio, instead of
    fixed px width/height plus a magic margin-top to space them apart. */
@@ -227,20 +241,30 @@ h2.subtitle {
     background-position: center;
 }
 
+.nvidia-image {
+    width: clamp(10rem, 20vw, 50rem);
+    aspect-ratio: 177 / 184;
+    background-image: url(../de-images/nvidia.png);
+    background-size: cover;
+    background-position: center;
+}
+
 /* 6. Media Queries */
 /* Everything above already reflows on its own. The one deliberate design
    call left: drop the paint-brushes image on small screens to reduce
    clutter, same as your original intent — but without the position:absolute
    + margin-top: 600px guesswork that was here before. */
 
-   @media only screen and (max-width: 740px) {
-    .flags-image {
-        margin: 0;
-    }
-   }
+  
+    @media only screen and (max-width: 740px) {
+        .flags-image {
+            margin: 0;
+        }
+        .paint-brushes-image {
+            display: none;
+        }
 
-   @media only screen and (max-width: 540px) {
-    .paint-brushes-image {
-        display: none;
+        .flags-container {
+            gap: clamp(1rem, 1vw, 5.5rem);
+        }
     }
-}
